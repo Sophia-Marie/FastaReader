@@ -4,36 +4,46 @@ package fastareader;
 import java.io.*;
 
 /**
- * @author Sophia
+ * @author Sophia and Julia
  */
 public class FastaReader {
 
-    /**
-     * @param args the command line arguments
-     */
     String header, sequence;
+    int len;
     public FastaReader(){
         this.header=header;
         this.sequence=sequence;
+        this.len=len;
     }
-    public FastaReader getNextSequence(FastaReader header, FastaReader sequence){
+    public FastaReader getNextSequence(){
+        String seq="";
         
-        fasta = new FastaReader();
-         BufferedReader input = null;
+        FastaReader fasta = new FastaReader();
+        
+        BufferedReader input = null;
         try {
 
             String currentLine;
-
+            
             input = new BufferedReader(new FileReader("C:\\Users\\Sophia\\Documents\\NetBeansProjects\\FastaReader\\src\\fastareader\\uniprot-escherichia.fasta"));
 
             while ((currentLine = input.readLine()) != null) {
-               // System.out.println(sCurrentLine);
                 if(currentLine.startsWith(">")){
-            }
-
-        } catch (IOException e) {
+                    //fasta header der sequenz
+                    fasta.header= currentLine.substring(1);
+                    fasta.sequence=seq;
+                }
+                else{
+                    //fasta Sequenz zusammensetzen
+                    fasta.sequence +=currentLine;
+                }
+                }
+        }
+        catch (IOException e) {
             e.printStackTrace();
-        } finally {
+        } 
+        
+        finally {
             try {
                 if (input != null)input.close();
             } catch (IOException ex) {
@@ -45,9 +55,10 @@ public class FastaReader {
     }
     
     public static void main(String[] args) {
-        // TODO code application logic here
-        //getNextSequence()
-        //String inputLine = input.readLine();
+        
+        FastaReader fasta = getNextSequence();
+        //getNestSequence ausführen und Header und Sequenz ausgeben
+
         
     }
     
