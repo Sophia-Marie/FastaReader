@@ -11,23 +11,24 @@ public class FastaReader {
     /**
      * @param args the command line arguments
      */
-//    public FastaReader getNextSequence(){
-//        
-//        return; 
-//    }
-    
-    public static void main(String[] args) {
-        // TODO code application logic here
-        //getNextSequence()
-        BufferedReader input = null;
+    String header, sequence;
+    public FastaReader(){
+        this.header=header;
+        this.sequence=sequence;
+    }
+    public FastaReader getNextSequence(FastaReader header, FastaReader sequence){
+        
+        fasta = new FastaReader();
+         BufferedReader input = null;
         try {
 
-            String sCurrentLine;
+            String currentLine;
 
             input = new BufferedReader(new FileReader("C:\\Users\\Sophia\\Documents\\NetBeansProjects\\FastaReader\\src\\fastareader\\uniprot-escherichia.fasta"));
 
-            while ((sCurrentLine = input.readLine()) != null) {
-                System.out.println(sCurrentLine);
+            while ((currentLine = input.readLine()) != null) {
+               // System.out.println(sCurrentLine);
+                if(currentLine.startsWith(">")){
             }
 
         } catch (IOException e) {
@@ -39,6 +40,13 @@ public class FastaReader {
                 ex.printStackTrace();
             }
         }
+        
+        return fasta; 
+    }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        //getNextSequence()
         //String inputLine = input.readLine();
         
     }
