@@ -10,7 +10,7 @@ import java.util.*;
 public class HeaderParser {
     
     public static String extract(){
-        
+        String x="1";
        return x;
     }
     public static HashMap<String, String> parseHeader(String fastHeader, String sequence){
