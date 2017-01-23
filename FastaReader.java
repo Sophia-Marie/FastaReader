@@ -1,6 +1,7 @@
 
 package fastareader;
 
+import java.util.ArrayList;
 import java.io.*;
 
 /**
@@ -9,13 +10,13 @@ import java.io.*;
 public class FastaReader extends Fasta {
 
     
-    public static Fasta [] getAllFastas(){
+    public static ArrayList<Fasta> getAllFastas(){
         
-        Fasta [] fastas = new Fasta[50000];
-        String currentLine;
+        ArrayList<Fasta> fastas = new ArrayList<Fasta>();
         try {
             Fasta fasta = null;
             BufferedReader input = null;
+            String currentLine;
             
             input = new BufferedReader(new FileReader("C:\\Users\\Sophia\\Documents\\NetBeansProjects\\FastaReader\\src\\fastareader\\uniprot-escherichia.fasta"));
             int fastasIndex=0;
@@ -30,7 +31,7 @@ public class FastaReader extends Fasta {
                     fasta.sequence +=currentLine;
                 }
                 fasta.seqlen=fasta.sequence.length();
-                fastas[fastasIndex]= fasta;
+                fastas.add(fastasIndex, fasta);
                 fastasIndex +=1;
 //                System.out.println(fasta.header + " " + fasta.sequence);
 //                System.out.println(fastasIndex);
@@ -39,7 +40,7 @@ public class FastaReader extends Fasta {
         
         catch (IOException e) {
             System.out.println("Exception, file not found");
-        } 
+        }
         return fastas;
     }
     
@@ -49,11 +50,11 @@ public class FastaReader extends Fasta {
     }
     
     public static void main(String[] args) {
-        Fasta [] all;
+        ArrayList<Fasta> all;
         all=getAllFastas();
-        for (int i=0; i<all.length; i++) {
-            if (all[i]!=null){
-            System.out.println(all[i].header + "\n" + all[i].sequence);
+        for (int i=0; i<all.size(); i++) {
+            if (all.get(i)!=null){
+            System.out.println(all.get(i).header + "\n" + all.get(i).sequence);
             }
         }
         
