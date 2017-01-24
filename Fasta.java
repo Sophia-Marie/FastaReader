@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fastareader;
 
 /**
  *
- * @author Sophia
+ * @author Sophia und Julia
  */
 public class Fasta {
     
-    String header, sequence;
-    int seqlen;
+    private String header;
+    private String sequence;
+    private int seqlen;
     
     public Fasta(){
         header="";
@@ -20,5 +17,28 @@ public class Fasta {
         seqlen=0;
         
     }
-    
+   public void setHeader(String header) {
+       this.header = header;
+   }
+   
+   public void setSequence(String sequence) {
+       this.sequence = sequence;
+   }
+   
+   public void setSeqlen(int seqlen) {
+       this.seqlen = seqlen;
+   }
+   public String getHeader() {
+       return header;
+   }
+   
+   public String getSequence() { 
+       return sequence; 
+   }
+   
+   public int getSeqlen() {
+       this.seqlen= this.sequence.length();
+       return seqlen;
+   }
+   
 }
