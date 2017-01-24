@@ -25,9 +25,6 @@ public class Fasta {
        this.sequence += sequence;
    }
    
-   public void setSeqlen(int seqlen) {
-       this.seqlen = seqlen;
-   }
    public String getHeader() {
        return header;
    }
