@@ -22,7 +22,7 @@ public class Fasta {
    }
    
    public void setSequence(String sequence) {
-       this.sequence = sequence;
+       this.sequence += sequence;
    }
    
    public void setSeqlen(int seqlen) {
