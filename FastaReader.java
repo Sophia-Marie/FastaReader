@@ -9,13 +9,12 @@ import java.io.*;
 public class FastaReader {
 
     final private static String FILE = "C:\\Users\\Sophia\\Documents\\NetBeansProjects\\FastaReader\\src\\fastareader\\uniprot-escherichia.fasta";
-
-    private BufferedReader inputStream;
+    final private BufferedReader INPUTSTREAM;
     private String currentLine;
 
     public FastaReader(BufferedReader inputStream) throws IOException {
-        this.inputStream = inputStream;
-        this.currentLine = inputStream.readLine();
+        this.INPUTSTREAM = inputStream;
+        this.currentLine = INPUTSTREAM.readLine();
     }
 
     public boolean hasNextSequence() {
@@ -29,8 +28,10 @@ public class FastaReader {
             fasta.setHeader(currentLine);
         }
         do {
-            currentLine = inputStream.readLine();
+            currentLine = INPUTSTREAM.readLine();
+            if (currentLine!=null){                 
             fasta.setSequence(currentLine);
+            }
         } while (currentLine != null && !currentLine.startsWith(">"));
 
         return fasta;
@@ -38,8 +39,8 @@ public class FastaReader {
 
     public static void main(String[] args) {
         try {
-            BufferedReader inputStream = new BufferedReader(new FileReader(FILE));
-            FastaReader fastaReader = new FastaReader(inputStream);
+            BufferedReader INPUTSTREAM = new BufferedReader(new FileReader(FILE));
+            FastaReader fastaReader = new FastaReader(INPUTSTREAM);
             ArrayList<Fasta> allFastaObjects = new ArrayList<Fasta>();
             while (fastaReader.hasNextSequence()) {
                 Fasta fasta = fastaReader.getNextSequence();
