@@ -10,42 +10,44 @@ public class FastaReader {
 
     final private static String FILE = "C:\\Users\\Sophia\\Documents\\NetBeansProjects\\FastaReader\\src\\fastareader\\uniprot-escherichia.fasta";
 
-    public Fasta getNextSequence(BufferedReader inputStream) {
+    private BufferedReader inputStream;
+    private String currentLine;
+
+    public FastaReader(BufferedReader inputStream) throws IOException {
+        this.inputStream = inputStream;
+        this.currentLine = inputStream.readLine();
+    }
+
+    public boolean hasNextSequence() {
+        return currentLine != null && currentLine.startsWith(">");
+    }
+
+    public Fasta getNextSequence() throws IOException {
         Fasta fasta = new Fasta();
-        try {
-            inputStream.mark(10000);
-            while (true) {
-                String line = inputStream.readLine();
 
-                if (line == null) {
-                    inputStream.reset();
-                    return fasta.getSeqlen() > 0 ? fasta : null;
-                } else if (line.startsWith(">")) {
-                    fasta.setHeader(line);
-                } else {
-                    fasta.setSequence(line);
-                }
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error");
+        if (currentLine.startsWith(">")) {
+            fasta.setHeader(currentLine);
         }
+        do {
+            currentLine = inputStream.readLine();
+            fasta.setSequence(currentLine);
+        } while (currentLine != null && !currentLine.startsWith(">"));
+
         return fasta;
     }
 
     public static void main(String[] args) {
         try {
             BufferedReader inputStream = new BufferedReader(new FileReader(FILE));
-            FastaReader fastaReader = new FastaReader();
+            FastaReader fastaReader = new FastaReader(inputStream);
             ArrayList<Fasta> allFastaObjects = new ArrayList<Fasta>();
-            Fasta fasta;
-            while ((fasta = fastaReader.getNextSequence(inputStream)) != null) {
+            while (fastaReader.hasNextSequence()) {
+                Fasta fasta = fastaReader.getNextSequence();
                 allFastaObjects.add(fasta);
                 System.out.println(fasta.getHeader() + "\n" + fasta.getSequence());
             }
         } catch (IOException e) {
             System.out.println("Error, File not found!");
         }
-
     }
 }
