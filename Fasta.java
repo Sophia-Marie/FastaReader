@@ -3,7 +3,7 @@ package fastareader;
 
 /**
  *
- * @author Sophia und Julia
+ * @author Sophia Descho und Julia Meyer
  */
 public class Fasta {
     

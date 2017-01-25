@@ -1,10 +1,12 @@
 package fastareader;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.io.*;
 
 /**
- * @author Sophia and Julia
+ * @author Sophia Descho und Julia Meyer
  */
 public class FastaReader {
 
@@ -44,6 +46,8 @@ public class FastaReader {
             ArrayList<Fasta> allFastaObjects = new ArrayList<Fasta>();
             while (fastaReader.hasNextSequence()) {
                 Fasta fasta = fastaReader.getNextSequence();
+                
+                //Debug output
                 allFastaObjects.add(fasta);
                 System.out.println(fasta.getHeader() + "\n" + fasta.getSequence());
             }
