@@ -45,6 +45,7 @@ public class FastaReader {
             BufferedReader INPUTSTREAM = new BufferedReader(new FileReader(FILE));
             FastaReader fastaReader = new FastaReader(INPUTSTREAM);
             ArrayList<Fasta> allFastaObjects = new ArrayList<>();
+            
             while (fastaReader.hasNextSequence()) {
                 Fasta fasta = fastaReader.getNextSequence();
                 allFastaObjects.add(fasta);
@@ -54,6 +55,7 @@ public class FastaReader {
             parsedHeader = HeaderParser.parseHeader(allFastaObjects.get(2).getHeader());
             //output of parsed Header
             System.out.println(parsedHeader);
+            
         } catch (IOException e) {
             System.out.println("Error, File not found!");
         }
