@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author Sophia Descho und Julia Meyer
@@ -31,8 +32,8 @@ public class FastaReader {
         }
         do {
             currentLine = INPUTSTREAM.readLine();
-            if (currentLine!=null){                 
-            fasta.setSequence(currentLine);
+            if (currentLine != null) {
+                fasta.setSequence(currentLine);
             }
         } while (currentLine != null && !currentLine.startsWith(">"));
 
@@ -46,13 +47,21 @@ public class FastaReader {
             ArrayList<Fasta> allFastaObjects = new ArrayList<Fasta>();
             while (fastaReader.hasNextSequence()) {
                 Fasta fasta = fastaReader.getNextSequence();
-                
-                //Debug output
                 allFastaObjects.add(fasta);
-                System.out.println(fasta.getHeader() + "\n" + fasta.getSequence());
+                //Debug output
+                //System.out.println(fasta.getHeader() + "\n" + fasta.getSequence());
             }
+            HeaderParser parseAheader = new HeaderParser();
+            HashMap<String, String> mappings;
+            //test the HeaderParser and choose any index of allFastaObjects below
+            mappings = parseAheader.parseHeader(allFastaObjects.get(2).getHeader());
+            //compare output
+            System.out.println(allFastaObjects.get(2).getHeader());
+            System.out.println(mappings);
+
         } catch (IOException e) {
             System.out.println("Error, File not found!");
         }
+
     }
 }
