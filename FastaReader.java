@@ -53,7 +53,6 @@ public class FastaReader {
             HashMap<String, String> parsedHeader;
             //test the HeaderParser and choose any index of allFastaObjects below
             parsedHeader = HeaderParser.parseHeader(allFastaObjects.get(2).getHeader());
-            //output of parsed Header
             System.out.println(parsedHeader);
             
         } catch (IOException e) {
