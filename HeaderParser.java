@@ -10,9 +10,9 @@ import java.util.HashMap;
 public class HeaderParser {
 
     //regex for various organisms of http://www.uniprot.org/help/fasta-headers
-    final private static Pattern UNIPROTID = Pattern.compile("([|])((\\w)*)([|])");
-    final private static Pattern ENTRYNAME = Pattern.compile("([|])([\\w]*[_]([\\w]*))");
-    final private static Pattern ORGANISM = Pattern.compile("(OS=)(([\\w\\s\\W])*)([\\s]GN=)");
+    final private static Pattern UNIPROTID = Pattern.compile("([|])(\\w*)([|])");
+    final private static Pattern ENTRYNAME = Pattern.compile("([|])(\\w*[_]\\w*)");
+    final private static Pattern ORGANISM = Pattern.compile("(OS=)([\\w\\s\\W]*)(\\sGN=)");
 
     public static HashMap<String, String> parseHeader(String fastHeader) {
         HashMap<String, String> mappings = new HashMap<>();
