@@ -14,7 +14,6 @@ public class Fasta {
         header = "";
         sequence = "";
         seqlen = 0;
-
     }
 
     public void setHeader(String header) {
