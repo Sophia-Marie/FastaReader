@@ -48,8 +48,6 @@ public class FastaReader {
             while (fastaReader.hasNextSequence()) {
                 Fasta fasta = fastaReader.getNextSequence();
                 allFastaObjects.add(fasta);
-                //Debug output
-                //System.out.println(fasta.getHeader() + "\n" + fasta.getSequence());
             }
             HeaderParser parseAheader = new HeaderParser();
             HashMap<String, String> mappings;
