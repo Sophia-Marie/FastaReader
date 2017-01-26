@@ -15,12 +15,7 @@ public class HeaderParser {
     final private static Pattern ORGANISM = Pattern.compile("(OS=)(([\\w\\s\\W])*)(GN=)"); //soll alles zwischen OS= und GN= finden
 
     public static HashMap<String, String> parseHeader(String fastHeader) {
-        //ExampleHeader
-        //fastHeader = ">sp|P0A7Y4|RNH_ECOLI Ribonuclease HI OS=Escherichia coli (strain K12) GN=rnhA PE=1 SV=1";
-        /*
-        allg in uniprot: >db|UniqueIdentifier|EntryName ProteinName OS=OrganismName[ GN=GeneName]PE=ProteinExistence SV=SequenceVersion
-         */
-        HashMap<String, String> mappings = new HashMap<String, String>();
+        HashMap<String, String> mappings = new HashMap<>();
 
         Matcher uniprotIdMatch = UNIPROTID.matcher(fastHeader);
         Matcher entryNameMatch = ENTRYNAME.matcher(fastHeader);

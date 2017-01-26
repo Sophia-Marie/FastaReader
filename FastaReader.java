@@ -44,7 +44,7 @@ public class FastaReader {
         try {
             BufferedReader INPUTSTREAM = new BufferedReader(new FileReader(FILE));
             FastaReader fastaReader = new FastaReader(INPUTSTREAM);
-            ArrayList<Fasta> allFastaObjects = new ArrayList<Fasta>();
+            ArrayList<Fasta> allFastaObjects = new ArrayList<>();
             while (fastaReader.hasNextSequence()) {
                 Fasta fasta = fastaReader.getNextSequence();
                 allFastaObjects.add(fasta);
