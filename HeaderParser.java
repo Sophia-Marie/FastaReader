@@ -9,10 +9,10 @@ import java.util.HashMap;
  */
 public class HeaderParser {
 
-    //define the regex for various organisms of http://www.uniprot.org/help/fasta-headers
-    final private static Pattern UNIPROTID = Pattern.compile("([|])((\\w)*)([|])"); //soll alles zwischen | und | finden
-    final private static Pattern ENTRYNAME = Pattern.compile("([|])([\\w]*[_]([\\w]*))"); //soll alles zwischen | und dem nächste Leerzeichen finden
-    final private static Pattern ORGANISM = Pattern.compile("(OS=)(([\\w\\s\\W])*)(GN=)"); //soll alles zwischen OS= und GN= finden
+    //regex for various organisms of http://www.uniprot.org/help/fasta-headers
+    final private static Pattern UNIPROTID = Pattern.compile("([|])((\\w)*)([|])");
+    final private static Pattern ENTRYNAME = Pattern.compile("([|])([\\w]*[_]([\\w]*))");
+    final private static Pattern ORGANISM = Pattern.compile("(OS=)(([\\w\\s\\W])*)(GN=)");
 
     public static HashMap<String, String> parseHeader(String fastHeader) {
         HashMap<String, String> mappings = new HashMap<>();
