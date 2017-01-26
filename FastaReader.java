@@ -49,12 +49,11 @@ public class FastaReader {
                 Fasta fasta = fastaReader.getNextSequence();
                 allFastaObjects.add(fasta);
             }
-            HashMap<String, String> mappings;
+            HashMap<String, String> parsedHeader;
             //test the HeaderParser and choose any index of allFastaObjects below
-            mappings = HeaderParser.parseHeader(allFastaObjects.get(2).getHeader());
-            //compare output
-            System.out.println(allFastaObjects.get(2).getHeader());
-            System.out.println(mappings);
+            parsedHeader = HeaderParser.parseHeader(allFastaObjects.get(2).getHeader());
+            //output of parsed Header
+            System.out.println(parsedHeader);
         } catch (IOException e) {
             System.out.println("Error, File not found!");
         }
